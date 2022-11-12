@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="border:2px solid white;
+        height:25px;
+        width:25px;
+        transform: translate(-50%,-50%);
+        border-radius:50%;
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
+        position: absolute;
+        z-index: 10;
+        pointer-events: none; 
+        color: white;
+        mix-blend-mode: difference;" id="circularcursor"></div>
+
+    <img id="difference" width="100%"
+        src="https://raw.githubusercontent.com/yashrajbharti/kml-images/main/20221111_000730__01-min.png" alt="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(document).on('mousemove', function (e) {
+                $('#circularcursor').css({
+                    left: e.pageX,
+                    top: e.pageY
+                });
+            })
+        });
+        setInterval(function () {
+            var $one = $("#difference");
+            var $circular = $("#circularcursor");
+            if ($one.is(":hover")) {
+                $circular.css("background-color", "white");
+                $circular.css("background-blend-mode", "difference");
+                $circular.css("width", "50px");
+                $circular.css("height", "50px");
+                $circular.css("transition-duration", "0.3s");
+                $circular.css("transition-property", "width, height, transform, background");
+                $circular.css("transition-timing-function", "ease");
+            }
+            else {
+                $circular.css("background", "");
+                $circular.css("width", "25px");
+                $circular.css("height", "25px");
+                $circular.css("transition-duration", "0.5s");
+                $circular.css("transition-property", "width, height, transform, background");
+                $circular.css(" transition-timing-function", "ease");
+            }
+        }, 200);
+    </script>
+
+</body>
+</html>
